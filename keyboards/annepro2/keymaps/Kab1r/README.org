@@ -1,0 +1,8 @@
+
+
+* Features
++ CapsLock bound to Escape/Function
++ Vim-like arrow keys
++ Mouse Mode
++ Cyclical RGB Modes, Speeds, and Brightness
++ Extra Function Keys

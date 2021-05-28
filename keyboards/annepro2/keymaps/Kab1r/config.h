@@ -1,0 +1,1 @@
+#define MK_KINETIC_SPEED
