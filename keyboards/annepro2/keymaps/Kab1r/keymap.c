@@ -54,11 +54,11 @@ const uint16_t keymaps[/* LAYERS */][MATRIX_ROWS][MATRIX_COLS] = {
      *  \-----------------------------------------------------------------------------------------/
      */
     [_BASE] = KEYMAP(                                                                                                                   /* Base Layer */
-        KC_GRAVE,KC_1 , KC_2 , KC_3 , KC_4 , KC_5 , KC_6 , KC_7 , KC_8 , KC_9 , KC_0 , KC_MINS , KC_EQL ,    KC_BSPC,                   //
-        KC_TAB    , KC_Q , KC_W , KC_E , KC_R , KC_T , KC_Y , KC_U , KC_I , KC_O , KC_P  , KC_LBRC, KC_RBRC, KC_BSLS,                   //
-        ESC_FN ,      KC_A,  KC_S, KC_D,  KC_F , KC_G , KC_H , KC_J , KC_K, KC_L, KC_SCLN, KC_QUOT  ,    KC_ENT     ,                   //
-        KC_LSFT        , KC_Z , KC_X , KC_C , KC_V , KC_B , KC_N , KC_M ,KC_COMM,KC_DOT,KC_SLSH  ,     KC_RSFT      ,                   //
-        KC_LCTL  , KC_LGUI , KC_LALT,              KC_SPACE,          KC_RALT, KC_LOCK      , MO(_HARDWARE), KC_RCTL                    //
+        KC_GRAVE,KC_1,  KC_2,  KC_3,  KC_4,  KC_5,  KC_6,  KC_7,  KC_8,  KC_9,  KC_0,  KC_MINS,  KC_EQL,     KC_BSPC,                   //
+        KC_TAB,     KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,  KC_Y,  KC_U,  KC_I,  KC_O,  KC_P,   KC_LBRC, KC_RBRC, KC_BSLS,                   //
+        ESC_FN,       KC_A,  KC_S, KC_D,  KC_F,  KC_G,  KC_H,  KC_J,  KC_K, KC_L, KC_SCLN, KC_QUOT,      KC_ENT     ,                   //
+        KC_LSFT,         KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  KC_N,  KC_M, KC_COMM,KC_DOT,KC_SLSH,       KC_RSFT      ,                   //
+        KC_LCTL,   KC_LGUI,  KC_LALT,              KC_SPACE,          KC_RALT, KC_LOCK,       MO(_HARDWARE), KC_RCTL                    //
         ),                                                                                                                              /* Base Layer */
     /* Function Layer
      *  ,-----------------------------------------------------------------------------------------.
@@ -125,9 +125,9 @@ const uint16_t keymaps[/* LAYERS */][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t keymaps_size = sizeof(keymaps);
 
-void matrix_init_user(void) {}
+void matrix_init_user(void) { return; }
 
-void matrix_scan_user(void) {}
+void matrix_scan_user(void) { return; }
 
 layer_state_t layer_state_set_user(layer_state_t layer) { return layer; }
 
@@ -135,11 +135,13 @@ void annepro2LedPrevAnimationSpeed(void) {
     for (int i = 0; i < NUM_SPEEDS - 1; i++) {
         annepro2LedNextAnimationSpeed();
     }
+    return;
 }
 void annepro2LedPrevIntensity(void) {
     for (int i = 0; i < NUM_INTENSITIES - 1; i++) {
         annepro2LedNextIntensity();
     }
+    return;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -167,13 +169,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void keyboard_post_init_user(void) {
     annepro2LedEnable();
     // annepro2LedSetProfile(0);
+    return;
 }
 
 bool led_update_user(led_t leds) {
-    if (leds.caps_lock) {
-        annepro2LedSetMask(CAPS_LOCATION);
-    } else {
-        annepro2LedClearMask(CAPS_LOCATION);
-    }
     return true;
 }
